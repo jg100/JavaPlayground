@@ -42,10 +42,17 @@ public class BitOperations {
 
     }
 
-    //Setting a bit in the nth postion of "num"
+    /**
+     *
+     * @param num
+     * @param pos
+     * @return
+     */
     public static int set(int num, int pos) {
-
-        //left shift and use OR operator to set the bit
+        /**
+         * Left shift the 0001 to the desired index and bitwise and to num
+         * Store the number in num and return.
+         */
         num |= (1 << pos);
         return num;
     }
