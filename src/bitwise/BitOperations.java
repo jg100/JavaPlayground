@@ -1,5 +1,7 @@
 package bitwise;
 
+import java.util.ArrayList;
+
 public class BitOperations {
 
     public static void main(String[] args) {
