@@ -63,23 +63,24 @@ public class ArrayList<T> {
     }
 
     public boolean remove(T value) {
-        for(int i = 0; i < this.length(); i++) {
-            if(this.arr[i].equals(value)) {
-
+        T[] temp = (T[]) new Object[this.length()-1];
+        for(int i = 0; i < temp.length; i++) {
+            T currVal = this.arr[i];
+            if(!(currVal.equals(value))) {
+                temp[i] = currVal;
             }
         }
-
+        return true;
     }
 
     private void remove(T[] arr, T value) {
         T[] temp = (T[]) new Object[this.length() - 1];
 
-
     }
 
 
     public int indexOf(T value) {
-
+        return 0;
     }
 
 
