@@ -3,12 +3,13 @@ package sorting;
 
 import java.util.Arrays;
 
-public class Sorts {
+public class Sorts<T> {
 
     //Main testing
     public static void main(String[] args) {
         int[] nums = {5,2,4,1,7,5,3,6};
-        selectionSort(nums);
+        //selectionSort(nums);
+        insertionSort(nums);
         System.out.println(Arrays.toString(nums));
 
     }
@@ -38,7 +39,35 @@ public class Sorts {
 
 
     //Insertion sort
-    public static void insertionSort(int[] arr){
+
+    /**
+     * Insertion Sort: Sorted half and unsorted half.
+     *
+     * Partition the array into two parts. Algorithm removes the first entry of the unsorted part and inserts it
+     * into the proper location of the sorted half.
+     * @param arr
+     */
+    //Iterative approach
+    public static void insertionSort(int[] arr) {
+        int unsortedStart = 1;
+        //iterate through array and keep track of unsorted section
+        for(int i = 1; i < arr.length; i++) {
+            int j = 0;
+            while(j < unsortedStart) {
+                if(arr[j] > arr[unsortedStart]) {
+                    swap(arr,j,unsortedStart);
+                }
+                j++;
+            }
+            unsortedStart++;
+        }
+
+
+
+    }
+
+    //Recursive insertion sort
+    public static void insertionSortRec(int[] arr) {
 
 
     }
