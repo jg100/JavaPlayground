@@ -112,14 +112,16 @@ public class Sorts<T> {
 
         System.out.println();
         System.out.println("endIndex: " + endIndex + "\nstartIndex: " + startIndex);
-        int mid = (endIndex - startIndex) / 2;
+
+        //Issue: Last leaves not separated. Issue in mid with 0 and 1 indexes.
+        int mid = (endIndex+ - startIndex) / 2;
 
         if(mid <= 0) return;
 
         System.out.println("Mid index: " + mid);
 
         //Offset the startIndex and mid
-        mergeSort(arr, startIndex, mid); //left side split
+        mergeSort(arr, startIndex, startIndex + mid); //left side split
 
         //Issue: Was not offsetting the middle index by the new start index
         mergeSort(arr, startIndex + mid + 1 , endIndex); //right side divide
