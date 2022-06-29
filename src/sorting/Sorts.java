@@ -116,7 +116,8 @@ public class Sorts<T> {
         //Issue: Last leaves not separated. Issue in mid with 0 and 1 indexes.
         int mid = (endIndex+ - startIndex) / 2;
 
-        if(mid <= 0) return;
+        //When indicies are the same no need to continue recursion
+        if(endIndex == startIndex) return;
 
         System.out.println("Mid index: " + mid);
 
