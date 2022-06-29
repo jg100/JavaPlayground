@@ -47,6 +47,8 @@ public class Sorts<T> {
      *
      * Partition the array into two parts. Algorithm removes the first entry of the unsorted part and inserts it
      * into the proper location of the sorted half.
+     *
+     * Maybe change swap for insert and push.
      * @param arr
      */
     //Iterative approach
@@ -67,7 +69,13 @@ public class Sorts<T> {
         }
     }
 
-    //Recursive insertion sort
+    //Recursive insertion sort.
+
+    /**
+     * Change swap for insert and shift
+     * @param arr
+     * @param unsortedStart
+     */
     public static void insertionSortRec(int[] arr, int unsortedStart) {
         //pass in unsorted array recursively
         if(unsortedStart == arr.length-1) return;
@@ -84,7 +92,44 @@ public class Sorts<T> {
         insertionSortRec(arr,unsortedStart);
     }
 
+    //Shell Sort
+
     //Merge Sort
+    /**
+     * Merge sort divides an array into smaller partitions
+     * Sorts smaller parts and merges into a final sorted array
+     * Divide and conquer algorithm.
+     */
+    public static void mergeSort(int[] arr, int startIndex, int endIndex) {
+        int mid = (endIndex - startIndex) / 2;
+        if(mid == 0) return;
+
+        int firstHalf = mid - 1;
+        int secondHalf = mid;
+
+        //divide portion
+
+        //left branch
+        mergeSort(arr, startIndex, firstHalf);
+
+        //right branch
+        mergeSort(arr, secondHalf, endIndex);
+
+        //merge portion
+
+    }
+
+    private static void merge(int[] arr1, int[] arr2) {
+
+    }
+
+    private void copy(int[] original, int[] target) {
+        for(int i = 0; i < original.length; i++) {
+            target[i] = original[i];
+        }
+    }
+
+
 
     //Quick Sort
 
