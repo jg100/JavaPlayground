@@ -7,11 +7,13 @@ public class Sorts<T> {
 
     //Main testing
     public static void main(String[] args) {
-        int[] nums = {8,2,6,4,9,7,1};
+        //int[] nums = {8,2,6,4,9,7,1};
+        int[] arr = {7,5,9,3,6,0,2,4};
         //selectionSort(nums);
         //insertionSort(nums);
-        insertionSortRec(nums,1);
-        System.out.println(Arrays.toString(nums));
+        //insertionSortRec(nums,1);
+        mergeSort(arr,0,arr.length-1);
+        System.out.println(Arrays.toString(arr));
 
     }
 
@@ -101,25 +103,28 @@ public class Sorts<T> {
      * Divide and conquer algorithm.
      */
     public static void mergeSort(int[] arr, int startIndex, int endIndex) {
+        //tackle divide step(s) first
+        for(int i = startIndex; i <= endIndex; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
         int mid = (endIndex - startIndex) / 2;
-        if(mid == 0) return;
+        if(startIndex == endIndex) return;
 
-        int firstHalf = mid - 1;
-        int secondHalf = mid;
+        mergeSort(arr, startIndex, mid); //left side split
 
-        //divide portion
+        //mergeSort(arr,mid+1,endIndex); //right side split
 
-        //left branch
-        mergeSort(arr, startIndex, firstHalf);
 
-        //right branch
-        mergeSort(arr, secondHalf, endIndex);
 
-        //merge portion
 
     }
 
-    private static void mergeV1(int[] arr1, int[] arr2) {
+    /**
+     * Downside to this merge function is the allocation of an array for every merge call :/
+     * Bad space complexity.
+     */
+    private static int[] mergeV1(int[] arr1, int[] arr2) {
         int[] temp = new int[arr1.length + arr2.length];
         for(int i = 0; i < arr1.length; i++) {
             if(arr1[i] > arr2[i]) {
@@ -131,6 +136,15 @@ public class Sorts<T> {
                 temp[i+1] = arr2[i];
             }
         }
+    return temp;
+    }
+
+    /**
+     * Merging consists of comparing corresponding indicies.
+     */
+    public static void merge(int[] arr1, int[] arr2) {
+
+
 
     }
 
