@@ -7,9 +7,10 @@ public class Sorts<T> {
 
     //Main testing
     public static void main(String[] args) {
-        int[] nums = {5,2,4,1,7,5,3,6};
+        int[] nums = {8,2,6,4,9,7,1};
         //selectionSort(nums);
-        insertionSort(nums);
+        //insertionSort(nums);
+        insertionSortRec(nums,1);
         System.out.println(Arrays.toString(nums));
 
     }
@@ -26,6 +27,7 @@ public class Sorts<T> {
                     swap(nums, i, j);
                 }
             }
+
 
         }
 
@@ -55,21 +57,31 @@ public class Sorts<T> {
             int j = 0;
             while(j < unsortedStart) {
                 if(arr[j] > arr[unsortedStart]) {
+                    //Insert value into j spot, move everything up one
                     swap(arr,j,unsortedStart);
                 }
                 j++;
             }
+            System.out.println(Arrays.toString(arr));
             unsortedStart++;
         }
-
-
-
     }
 
     //Recursive insertion sort
-    public static void insertionSortRec(int[] arr) {
+    public static void insertionSortRec(int[] arr, int unsortedStart) {
+        //pass in unsorted array recursively
+        if(unsortedStart == arr.length-1) return;
 
 
+        for(int i = 0; i < unsortedStart; i++) {
+            if(arr[unsortedStart] < arr[i]) {
+                swap(arr,unsortedStart,i);
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+        //System.out.println(unsortedStart);
+        unsortedStart = unsortedStart+1;
+        insertionSortRec(arr,unsortedStart);
     }
 
     //Merge Sort
