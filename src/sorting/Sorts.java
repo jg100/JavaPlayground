@@ -104,18 +104,25 @@ public class Sorts<T> {
      */
     public static void mergeSort(int[] arr, int startIndex, int endIndex) {
         //tackle divide step(s) first
+
+        //Printing of traversed portions of array for debugging purposes
         for(int i = startIndex; i <= endIndex; i++) {
             System.out.print(arr[i] + " ");
         }
-        System.out.println();
-        int mid = (endIndex - startIndex) / 2;
-        if(startIndex == endIndex) return;
 
+        System.out.println();
+        System.out.println("endIndex: " + endIndex + "\nstartIndex: " + startIndex);
+        int mid = (endIndex - startIndex) / 2;
+
+        if(mid <= 0) return;
+
+        System.out.println("Mid index: " + mid);
+
+        //Offset the startIndex and mid
         mergeSort(arr, startIndex, mid); //left side split
 
-        //mergeSort(arr,mid+1,endIndex); //right side split
-
-
+        //Issue: Was not offsetting the middle index by the new start index
+        mergeSort(arr, startIndex + mid + 1 , endIndex); //right side divide
 
 
     }
