@@ -120,6 +120,17 @@ public class Sorts<T> {
     }
 
     private static void merge(int[] arr1, int[] arr2) {
+        int[] temp = new int[arr1.length + arr2.length];
+        for(int i = 0; i < arr1.length; i++) {
+            if(arr1[i] > arr2[i]) {
+                //put arr2[i] first in array
+                temp[i] = arr2[i];
+                temp[i+1] = arr1[i];
+            } else {
+                temp[i] = arr1[i];
+                temp[i+1] = arr2[i];
+            }
+        }
 
     }
 
