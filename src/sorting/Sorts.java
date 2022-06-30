@@ -12,7 +12,8 @@ public class Sorts<T> {
         //selectionSort(nums);
         //insertionSort(nums);
         //insertionSortRec(nums,1);
-        mergeSort(arr,0,arr.length-1);
+        int[] temp = new int[arr.length];
+        mergeSort(arr,temp,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
 
     }
@@ -102,7 +103,7 @@ public class Sorts<T> {
      * Sorts smaller parts and merges into a final sorted array
      * Divide and conquer algorithm.
      */
-    public static void mergeSort(int[] arr, int startIndex, int endIndex) {
+    public static void mergeSort(int[] arr, int[] temp, int startIndex, int endIndex) {
         //tackle divide step(s) first
 
         //Printing of traversed portions of array for debugging purposes
@@ -122,13 +123,30 @@ public class Sorts<T> {
         System.out.println("Mid index: " + mid);
 
         //Offset the startIndex and mid
-        mergeSort(arr, startIndex, startIndex + mid); //left side split
-
+        mergeSort(arr,temp, startIndex, startIndex + mid); //left side split
         //Issue: Was not offsetting the middle index by the new start index
-        mergeSort(arr, startIndex + mid + 1 , endIndex); //right side divide
+        mergeSort(arr,temp, startIndex + mid + 1 , endIndex); //right side divide
+
+        //Merge the results of the recursive calls above
+
+    }
+
+    /**
+     * Merging consists of comparing corresponding indicies.
+     * Given start and end indicies of an array
+     */
+    public static void merge(int[] arr, int[] temp, int start, int mid, int end) {
+
+        int firstHalfStart = start;
+        int firstHalfEnd = mid;
+
+        int secondHalfStart = mid + 1;
+        int secondHalfEnd = end;
+
 
 
     }
+
 
     /**
      * Downside to this merge function is the allocation of an array for every merge call :/
@@ -149,14 +167,6 @@ public class Sorts<T> {
     return temp;
     }
 
-    /**
-     * Merging consists of comparing corresponding indicies.
-     */
-    public static void merge(int[] arr1, int[] arr2) {
-
-
-
-    }
 
     private void copy(int[] original, int[] target) {
         for(int i = 0; i < original.length; i++) {
