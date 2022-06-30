@@ -14,7 +14,9 @@ public class Sorts<T> {
         //insertionSortRec(nums,1);
         int[] temp = new int[arr.length];
         mergeSort(arr,temp,0,arr.length-1);
+
         System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(temp));
 
     }
 
@@ -128,7 +130,7 @@ public class Sorts<T> {
         mergeSort(arr,temp, startIndex + mid + 1 , endIndex); //right side divide
 
         //Merge the results of the recursive calls above
-
+        merge(arr,temp,startIndex,mid,endIndex);
     }
 
     /**
@@ -143,8 +145,46 @@ public class Sorts<T> {
         int secondHalfStart = mid + 1;
         int secondHalfEnd = end;
 
+        //traversing the passed in halfs of the array
+        int tempIndex = 0;
+        while((firstHalfStart <= firstHalfEnd) && (secondHalfStart <= secondHalfEnd)) {
+            if(arr[firstHalfStart] > arr[secondHalfStart]) {
+                //store the secondHalfStart index and increment
+                temp[tempIndex] = arr[secondHalfEnd];
+                secondHalfStart++;
+            } else if(arr[firstHalfStart] < arr[secondHalfStart]) {
+                //store the firstHalfStart and increment the value
+                temp[tempIndex] = arr[firstHalfStart];
+                firstHalfStart++;
+            }
+            tempIndex++;
+        }
+
+        //All values that can be compared are compared. Left-overs need to be copied over.
+        if(firstHalfStart != firstHalfEnd) { //if values not equal, end has not been reached
+            //copy remaining values
+            tempIndex += mergeCopyHelper(arr,temp,firstHalfStart,firstHalfEnd,tempIndex);
+        }
+
+        if(secondHalfStart != secondHalfEnd) {
+            //copy remaining  values
+            tempIndex += mergeCopyHelper(arr,temp,secondHalfStart,secondHalfEnd,tempIndex);
+        }
+
+        //copy the sorted piece to the original array. tempIndex would be location of last value.
 
 
+        System.out.println("In merge: " + Arrays.toString(temp));
+
+    }
+
+    private static int mergeCopyHelper(int[] main, int[] target, int start,int end, int index) {
+        int originalIndex = index;
+        for(int i = start; i <= end; i++) {
+            target[index] = main[i];
+            index++;
+        }
+        return index - originalIndex;
     }
 
 
