@@ -148,17 +148,20 @@ public class Sorts<T> {
         //traversing the passed in halfs of the array
         int tempIndex = 0;
         while((firstHalfStart <= firstHalfEnd) && (secondHalfStart <= secondHalfEnd)) {
-            if(arr[firstHalfStart] > arr[secondHalfStart]) {
+            if(arr[firstHalfStart] <= arr[secondHalfStart]) {
                 //store the secondHalfStart index and increment
-                temp[tempIndex] = arr[secondHalfEnd];
-                secondHalfStart++;
-            } else if(arr[firstHalfStart] < arr[secondHalfStart]) {
-                //store the firstHalfStart and increment the value
                 temp[tempIndex] = arr[firstHalfStart];
+                secondHalfStart++;
+            } else {
+                //store the firstHalfStart and increment the value
+                temp[tempIndex] = arr[secondHalfStart];
                 firstHalfStart++;
             }
             tempIndex++;
         }
+
+        System.out.println("Before copying the rem values: " + Arrays.toString(temp));
+
 
         //All values that can be compared are compared. Left-overs need to be copied over.
         if(firstHalfStart != firstHalfEnd) { //if values not equal, end has not been reached
@@ -172,7 +175,6 @@ public class Sorts<T> {
         }
 
         //copy the sorted piece to the original array. tempIndex would be location of last value.
-
 
         System.out.println("In merge: " + Arrays.toString(temp));
 
@@ -217,6 +219,7 @@ public class Sorts<T> {
 
 
     //Quick Sort
+    public static void
 
 
     //Heap sort (Sorted in place to get O(1) complexity
