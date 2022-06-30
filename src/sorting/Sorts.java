@@ -219,8 +219,17 @@ public class Sorts<T> {
 
 
     //Quick Sort
-    public static void
 
+    /**
+     * - Choose a pivot. Pivot is in position that it will reside in final sorted array
+     * - Entries before the pivot are less than or equal the pivot
+     * - Entries in the positions after the pivot are greater than or equal to the pivot.
+     */
+    public static void quickSort() {
+
+
+
+    }
 
     //Heap sort (Sorted in place to get O(1) complexity
 
