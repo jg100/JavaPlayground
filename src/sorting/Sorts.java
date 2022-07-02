@@ -246,9 +246,11 @@ public class Sorts<T> {
                 rightIndex--;
             }
         }
-
         //swap the final pivot and left index overlap
         swap(arr,leftIndex,pivotIndex);
+
+        //recursively call the func to QuickSort the left and right side
+        quickSort(arr,);
     }
 
     // Helper function to select pivot.
