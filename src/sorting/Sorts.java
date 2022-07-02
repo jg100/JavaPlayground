@@ -8,15 +8,15 @@ public class Sorts<T> {
     //Main testing
     public static void main(String[] args) {
         //int[] nums = {8,2,6,4,9,7,1};
-        int[] arr = {7,5,9,3,6,0,2,4};
+        int[] arr = {3,5,0,4,6,1,2,4};
         //selectionSort(nums);
         //insertionSort(nums);
         //insertionSortRec(nums,1);
-        int[] temp = new int[arr.length];
-        mergeSort(arr,temp,0,arr.length-1);
-
+        //int[] temp = new int[arr.length];
+        //mergeSort(arr,temp,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
-        System.out.println(Arrays.toString(temp));
+        quickSort(arr,0, arr.length-1);
+        System.out.println(Arrays.toString(arr));
 
     }
 
@@ -225,10 +225,35 @@ public class Sorts<T> {
      * - Entries before the pivot are less than or equal the pivot
      * - Entries in the positions after the pivot are greater than or equal to the pivot.
      */
-    public static void quickSort() {
+    public static void quickSort(int[] arr, int start, int end) {
+        int leftIndex = start;
+        int rightIndex = end-1;
+        int pivotIndex = end;
 
+        while(leftIndex < rightIndex) {
+            System.out.println("L:" + arr[leftIndex]);
+            System.out.println("R:" + arr[rightIndex]);
 
+            //if left has a value that bigger than pivot and right has value smaller than pivot: swap
+            if(arr[leftIndex] >= arr[pivotIndex] && arr[rightIndex] < arr[pivotIndex]) {
+                swap(arr,leftIndex,rightIndex);
+                System.out.println(Arrays.toString(arr));
+                leftIndex++;
+                rightIndex--;
+            } else if(!(arr[leftIndex] >= arr[pivotIndex])) { //if left is smaller than pivot: inc the left and cont.
+                leftIndex++;
+            } else if(!(arr[rightIndex] < arr[pivotIndex])) { //if right is larger than pivot: dec the right and cont.
+                rightIndex--;
+            }
+        }
 
+        //swap the final pivot and left index overlap
+        swap(arr,leftIndex,pivotIndex);
+    }
+
+    // Helper function to select pivot.
+    private int selectPivot(int[] arr) {
+        return 1;
     }
 
     //Heap sort (Sorted in place to get O(1) complexity
