@@ -251,9 +251,9 @@ public class Sorts<T> {
         //swap the final pivot and left index overlap
         swap(arr,leftIndex,pivotIndex);
         System.out.println("*" + Arrays.toString(arr));
-        quickSort(arr,0,leftIndex);
-        quickSort(arr,leftIndex + 1, pivotIndex);
 
+        quickSort(arr,0,Math.abs(leftIndex-rightIndex));
+        quickSort(arr,Math.abs(leftIndex-rightIndex) + 1, arr.length-1);
         //recursively call the func to QuickSort the left and right side
 
     }
