@@ -231,7 +231,7 @@ public class Sorts<T> {
         int pivotIndex = end;
 
         System.out.println("Pivot: " + arr[pivotIndex]);
-        if((end - start) < 1) return;
+        if(end < start) return;
 
         while(leftIndex < rightIndex) {
             System.out.println("L:" + arr[leftIndex]);
@@ -248,14 +248,14 @@ public class Sorts<T> {
                 rightIndex--;
             }
         }
+
         //swap the final pivot and left index overlap
         swap(arr,leftIndex,pivotIndex);
         System.out.println("*" + Arrays.toString(arr));
 
-        quickSort(arr,0,Math.abs(leftIndex-rightIndex));
-        quickSort(arr,Math.abs(leftIndex-rightIndex) + 1, arr.length-1);
-        //recursively call the func to QuickSort the left and right side
+        quickSort(arr,start,pivotIndex-1);
 
+        quickSort(arr,pivotIndex + 1, arr.length - 1);
     }
 
     // Helper function to select pivot.
