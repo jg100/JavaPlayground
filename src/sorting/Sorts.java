@@ -227,10 +227,10 @@ public class Sorts<T> {
      */
     public static void quickSort(int[] arr, int start, int end) {
         int leftIndex = start;
-        int rightIndex = end-1;
+        int rightIndex = end;
         int pivotIndex = end;
 
-        System.out.println("Pivot: " + arr[pivotIndex]);
+        //System.out.println("Pivot: " + arr[pivotIndex]);
         if(end < start) return;
 
         while(leftIndex < rightIndex) {
