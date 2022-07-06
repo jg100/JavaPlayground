@@ -251,7 +251,7 @@ public class Sorts<T> {
         //swap the final pivot and left index overlap
         swap(arr,leftIndex,pivotIndex);
         quickSort(arr,0,leftIndex);
-        quickSort(arr,leftIndex + 1);
+        quickSort(arr,leftIndex + 1, pivotIndex);
 
         //recursively call the func to QuickSort the left and right side
 
