@@ -8,14 +8,15 @@ public class Sorts<T> {
     //Main testing
     public static void main(String[] args) {
         //int[] nums = {8,2,6,4,9,7,1};
-        int[] arr = {3,5,0,4,6,1,2,4};
+        int[] arr = {4,10,3,5,1};
         //selectionSort(nums);
         //insertionSort(nums);
         //insertionSortRec(nums,1);
         //int[] temp = new int[arr.length];
         //mergeSort(arr,temp,0,arr.length-1);
-        System.out.println(Arrays.toString(arr));
-        quickSort(arr,0, arr.length-1);
+        //System.out.println(Arrays.toString(arr));
+        //quickSort(arr,0, arr.length-1);
+        heapSort(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
 
     }
@@ -254,7 +255,6 @@ public class Sorts<T> {
         System.out.println("*" + Arrays.toString(arr));
 
         quickSort(arr,start,pivotIndex-1);
-
         quickSort(arr,pivotIndex + 1, arr.length - 1);
     }
 
@@ -264,7 +264,26 @@ public class Sorts<T> {
     }
 
     //Heap sort (Sorted in place to get O(1) complexity
-    public static void heapSort() {
+
+    /**
+     * Heapify the list
+     */
+    public static void heapSort(int[] arr, int start, int end) {
+        System.out.println("Start of func: " + Arrays.toString(arr));
+        System.out.println("End: " + end);
+        if(start == end) return;
+        for(int i = 0; i < end-2; i++) {
+            if(arr[i] < arr[i+1]) {
+                swap(arr,i,i+1);
+            } else if(arr[i] < arr[i+2]) {
+                swap(arr,i,i+2);
+            }
+        }
+        //end of for means we have "heap-ified" the array
+
+        //Swap the first and last values
+        swap(arr,0,end);
+        heapSort(arr,start,end-1);
 
     }
 
