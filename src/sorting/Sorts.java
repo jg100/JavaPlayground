@@ -230,7 +230,8 @@ public class Sorts<T> {
         int rightIndex = end-1;
         int pivotIndex = end;
 
-        if(arr.length <= 1) return;
+        System.out.println("Pivot: " + arr[pivotIndex]);
+        if((end - start) < 1) return;
 
         while(leftIndex < rightIndex) {
             System.out.println("L:" + arr[leftIndex]);
@@ -239,7 +240,6 @@ public class Sorts<T> {
             //if left has a value that bigger than pivot and right has value smaller than pivot: swap
             if(arr[leftIndex] >= arr[pivotIndex] && arr[rightIndex] < arr[pivotIndex]) {
                 swap(arr,leftIndex,rightIndex);
-                System.out.println(Arrays.toString(arr));
                 leftIndex++;
                 rightIndex--;
             } else if(!(arr[leftIndex] >= arr[pivotIndex])) { //if left is smaller than pivot: inc the left and cont.
@@ -250,6 +250,7 @@ public class Sorts<T> {
         }
         //swap the final pivot and left index overlap
         swap(arr,leftIndex,pivotIndex);
+        System.out.println("*" + Arrays.toString(arr));
         quickSort(arr,0,leftIndex);
         quickSort(arr,leftIndex + 1, pivotIndex);
 
