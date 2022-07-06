@@ -264,5 +264,8 @@ public class Sorts<T> {
     }
 
     //Heap sort (Sorted in place to get O(1) complexity
+    public static void heapSort() {
+
+    }
 
 }
