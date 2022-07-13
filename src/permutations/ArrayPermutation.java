@@ -14,19 +14,22 @@ public class ArrayPermutation {
     }
 
     //Return an array list of array lists that contain integers
-    public static ArrayList<Integer> backtrack(ArrayList<Integer> numsList) {
-
-        //Removes the first value in the list
-        int remove = numsList.remove(0);
-
-        if(numsList.size() == 1) {
+    public static void backtrack(ArrayList<Integer> numsList) {
+        //base case
+        if(numsList.size() == 1) { //if there is only one value return to last call
             System.out.println(numsList);
-            return null; //null for testing purposes
+            return;
         }
 
-        System.out.println(numsList);
+        //recursive call
+        /**
+         * Keep removing the first value until one is reached
+         */
+
+        int val = numsList.remove(0);
         backtrack(numsList);
-        return null;
+
+
     }
 
     public static ArrayList<ArrayList<Integer>> permute(int[] nums) {
