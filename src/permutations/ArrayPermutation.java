@@ -1,38 +1,48 @@
 package permutations;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ArrayPermutation {
 
     //testing main method
     public static void main(String[] args) {
-        int[] arr = {1,2,3};
-        permutations(arr,0);
+        int[] nums = {1,2,3};
+        permute(nums);
     }
 
     //Return an array list of array lists that contain integers
-    public static ArrayList<ArrayList<Integer>> permutations(int[] arr, int start) {
-        int removeIndex = start;
+    public static ArrayList<Integer> backtrack(ArrayList<Integer> numsList) {
 
-        if(removeIndex >= arr.length) {
-            System.out.println(arr[removeIndex]);
-            return null;
+        //Removes the first value in the list
+        int remove = numsList.remove(0);
+
+        if(numsList.size() == 1) {
+            System.out.println(numsList);
+            return null; //null for testing purposes
         }
 
-        for(int i = start; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
-
-        //recursive call for the left branch
-        permutations(arr,removeIndex+1);
-
-        //make index adjustments for the alternate branch. Switch omited value to next value
-        removeIndex++;
-
-        //recursive call for right branch
-        permutations(arr, removeIndex+1);
-
+        System.out.println(numsList);
+        backtrack(numsList);
         return null;
     }
+
+    public static ArrayList<ArrayList<Integer>> permute(int[] nums) {
+        ArrayList<Integer> numsList = new ArrayList<>();
+
+        ArrayList<ArrayList<Integer>> solution = new ArrayList<>();
+
+        //Copying values from nums array to ArrayList
+        for(int num : nums) {
+            numsList.add(num);
+        }
+
+        //Call backtracking algorithm
+        backtrack(numsList);
+        return null; //debug/testing
+    }
+
+
 }
