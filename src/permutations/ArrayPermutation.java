@@ -24,13 +24,15 @@ public class ArrayPermutation {
         // For every number in the list, make a recursive call to get permutation of #s with value removed
         for(int i = 0; i < numsList.size(); i++) {
             //remove the element and make recursive call
+
+            System.out.println("Current index: " + i);
+
             int val = numsList.remove(i);
             System.out.println(numsList);
             backtrack(numsList);
-            //add removed number back
-            numsList.add(0,val);
 
-            System.out.println("Out of recursive call");
+            //add removed number back
+            numsList.add(i,val);
         }
 
     }
