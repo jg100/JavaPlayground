@@ -36,28 +36,37 @@ public class ArrayPermutation {
              * Take removed and append the result fo the children to it
              * At the end of every iteration
              */
+            System.out.println("numList: " + numsList);
             //Adding the removed value as a list to the temp list of lists.
             int val = numsList.remove(i); //removing value i
             //List of permutations in current index
            //ArrayList<ArrayList<Integer>> vList = new ArrayList<>();
-
+            System.out.println("Value removed: " + val);
             System.out.println("Temp before rec adAll: " + temp);
 
+            System.out.println("numsList passed: " + numsList);
             //Rec call and saves the resulting permutations
             ArrayList<ArrayList<Integer>> returned = backtrack(numsList);
-            //System.out.println("vList before add: " + vList);
             System.out.println("Returned: " + returned);
-            for(ArrayList perm : returned) {
 
+            for(ArrayList perm : returned) {
                 perm.add(0, val);
                 System.out.println("Perm loop: " + perm);
             }
 
             temp.addAll(returned);
             System.out.println("Updated rec calls: " + returned);
-            numsList.add(i, val); //putting removed value back
             System.out.println("Temp at end of iteration: " + temp);
+            System.out.println("numList: " + numsList);
+
+
+            //System.out.println("vList before add: " + vList);
+            numsList.add(i, (Integer) val);
+            System.out.println("ReturnedII: " + returned);
         }
+
+
+
 
         return temp;
         //System.out.println(permutation);
