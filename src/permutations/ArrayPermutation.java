@@ -14,12 +14,20 @@ public class ArrayPermutation {
     }
 
     //Return an array list of array lists that contain integers
-    public static void backtrack(ArrayList<Integer> numsList) {
+    public static ArrayList<ArrayList<Integer>> backtrack(ArrayList<Integer> numsList) {
+
+        //ArrayList to collect the permutations for a particular instance
+
         //base case
         if(numsList.size() == 1) { //if there is only one value return to last call
-            System.out.println("Base case: " + numsList);
-            return;
+            //System.out.println("Base case: " + numsList);
+            //Returns a list of list with only the final value
+            ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
+            ret.add(numsList);
+            return ret;
         }
+
+        ArrayList<ArrayList<Integer>> permutation = new ArrayList<>();
 
         // For every number in the list, make a recursive call to get permutation of #s with value removed
         for(int i = 0; i < numsList.size(); i++) {
@@ -28,12 +36,17 @@ public class ArrayPermutation {
             System.out.println("Current index: " + i);
 
             int val = numsList.remove(i);
+            //Adding the removed value to the arrayList
+            permutation.add(new ArrayList<>(val));
+
             System.out.println(numsList);
-            backtrack(numsList);
+            permutation.addAll(backtrack(numsList));
 
             //add removed number back
             numsList.add(i,val);
         }
+
+        return permutation;
 
     }
 
@@ -48,7 +61,7 @@ public class ArrayPermutation {
         }
 
         //Call backtracking algorithm
-        backtrack(numsList);
+        System.out.println(backtrack(numsList));
         return null; //debug/testing
     }
 
