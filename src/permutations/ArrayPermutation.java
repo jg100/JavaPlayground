@@ -1,9 +1,5 @@
 package permutations;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class ArrayPermutation {
 
@@ -24,6 +20,7 @@ public class ArrayPermutation {
             //Returns a list of list with only the final value
             ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
             ret.add(numsList);
+            System.out.println("Base case: " + ret);
             return ret;
         }
 
@@ -31,23 +28,34 @@ public class ArrayPermutation {
 
         // For every number in the list, make a recursive call to get permutation of #s with value removed
         for(int i = 0; i < numsList.size(); i++) {
-            //remove the element and make recursive call
-
-            System.out.println("Current index: " + i);
 
             int val = numsList.remove(i);
-            //Adding the removed value to the arrayList
-            permutation.add(new ArrayList<>(val));
+            System.out.println("Value removed: " + val);
+            permutation.add(new ArrayList<Integer>(val));
 
+            //Adding the removed value to the arrayList
             System.out.println(numsList);
+            System.out.println("Perm array before addition: " + permutation);
             permutation.addAll(backtrack(numsList));
+
+            ArrayList<Integer> sp = new ArrayList<>();
+            System.out.println("Perm array before merge: " + permutation);
+            //Combine the arrays into one
+            for(int j = 0; j < permutation.size(); j++) {
+                sp.add(permutation.get(i).get(0)); //Every element is a single valued AL
+            }
+            permutation.clear();
+            permutation.add(sp);
+            System.out.println("Perm array after merge: " + permutation);
 
             //add removed number back
             numsList.add(i,val);
+
+            //System.out.println(permutation);
         }
 
+        //System.out.println(permutation);
         return permutation;
-
     }
 
     public static ArrayList<ArrayList<Integer>> permute(int[] nums) {
@@ -64,6 +72,4 @@ public class ArrayPermutation {
         System.out.println(backtrack(numsList));
         return null; //debug/testing
     }
-
-
 }
