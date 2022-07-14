@@ -1,4 +1,5 @@
 package permutations;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ArrayPermutation {
@@ -26,33 +27,35 @@ public class ArrayPermutation {
             return ret;
         }
 
-        // For every number in the list, make a recursive call to get permutation of #s with value removed
+        //List of all permutations
         ArrayList<ArrayList<Integer>> temp = new ArrayList<>();
         for(int i = 0; i < numsList.size(); i++) {
-            System.out.println("Iteration start");
+            System.out.println("Iteration start...");
             /**
              * For every value in the list/sublist remove one.
              * Take removed and append the result fo the children to it
              * At the end of every iteration
              */
-
             //Adding the removed value as a list to the temp list of lists.
             int val = numsList.remove(i); //removing value i
-            ArrayList<Integer> vList = new ArrayList<>();
-
-            vList.add(val);
-            //temp.add(vList); //adds the removed value to the temp arraylist
+            //List of permutations in current index
+           //ArrayList<ArrayList<Integer>> vList = new ArrayList<>();
 
             System.out.println("Temp before rec adAll: " + temp);
 
+            //Rec call and saves the resulting permutations
             ArrayList<ArrayList<Integer>> returned = backtrack(numsList);
-            vList.addAll(returned.get(0));
-            temp.add(vList);
-            System.out.println("vList: " + vList);
-            System.out.println("Result fo rec calls: " + returned);
+            //System.out.println("vList before add: " + vList);
+            System.out.println("Returned: " + returned);
+            for(ArrayList perm : returned) {
 
+                perm.add(0, val);
+                System.out.println("Perm loop: " + perm);
+            }
+
+            temp.addAll(returned);
+            System.out.println("Updated rec calls: " + returned);
             numsList.add(i, val); //putting removed value back
-
             System.out.println("Temp at end of iteration: " + temp);
         }
 
