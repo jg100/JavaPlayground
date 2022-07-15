@@ -21,7 +21,7 @@ public class Subset {
             //Add the current digit as a subset.
             subsets.add(new ArrayList<>(Arrays.asList(arr[i])));
 
-            //traversing the following numbers
+            //traversing the following numbers. Won't run if its greater than length
             for(int j = i + 1; j < arr.length; j++) {
                 subsets.add(Arrays.asList(arr[i], arr[j]));
             }
