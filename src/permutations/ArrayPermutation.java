@@ -46,7 +46,7 @@ public class ArrayPermutation {
                 temp.add(holder); //adds the permutation to the temp AL
             }
 
-            numsList.add(0,val);
+            numsList.add(i,val);
 
         }
 
