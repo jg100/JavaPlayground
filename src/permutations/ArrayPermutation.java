@@ -41,9 +41,9 @@ public class ArrayPermutation {
 
             for(ArrayList<Integer> ret : returned) {
                 ArrayList<Integer> holder = new ArrayList<>();
-                holder.add(val);
-                holder.addAll(ret);
-                temp.add(holder);
+                holder.add(val); //adds the currently omited value
+                holder.addAll(ret); //adds all the values from the rec return
+                temp.add(holder); //adds the permutation to the temp AL
             }
 
             numsList.add(0,val);
