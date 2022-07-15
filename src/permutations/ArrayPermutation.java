@@ -18,23 +18,23 @@ public class ArrayPermutation {
             //Returns a list of list with only the final value
             ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
             ret.add(numsList);
-            System.out.println("Base case: " + ret);
+            //System.out.println("Base case: " + ret);
             return ret;
         }
 
         //List of all permutations
         ArrayList<ArrayList<Integer>> temp = new ArrayList<>();
         for(int i = 0; i < numsList.size(); i++) { //traverses the entire list
-            System.out.println("Iteration start...");
+            //System.out.println("Iteration start...");
             /**
              * For every value in the list/sublist remove one.
              * Take removed and append the result fo the children to it
              * At the end of every iteration
              */
-            System.out.println("numList: " + numsList);
+            //System.out.println("numList: " + numsList);
             //Adding the removed value as a list to the temp list of lists.
             int val = numsList.remove(i); //removing value i
-            System.out.println("VAL:: " + val);
+            //System.out.println("VAL:: " + val);
             //Rec call and saves the resulting permutations
             ArrayList<ArrayList<Integer>> returned = backtrack(numsList);
 
@@ -50,7 +50,7 @@ public class ArrayPermutation {
 
         }
 
-        System.out.println("Final temp: " + temp);
+        //System.out.println("Final temp: " + temp);
         return temp;
         //System.out.println(permutation);
         //At the end the function should return the permutations for X level in the tree.
