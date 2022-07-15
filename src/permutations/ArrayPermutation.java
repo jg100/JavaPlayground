@@ -3,9 +3,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ArrayPermutation {
-
-    static ArrayList<ArrayList<Integer>> permutation = new ArrayList<>();
-
     //testing main method
     public static void main(String[] args) {
         int[] nums = {1,2,3};
@@ -14,9 +11,7 @@ public class ArrayPermutation {
 
     //Return an array list of array lists that contain integers
     public static ArrayList<ArrayList<Integer>> backtrack(ArrayList<Integer> numsList) {
-
         //ArrayList to collect the permutations for a particular instance
-
         //base case returns a single value as a list of a list.
         if(numsList.size() == 1) { //if there is only one value return to last call
             //System.out.println("Base case: " + numsList);
@@ -29,7 +24,7 @@ public class ArrayPermutation {
 
         //List of all permutations
         ArrayList<ArrayList<Integer>> temp = new ArrayList<>();
-        for(int i = 0; i < numsList.size(); i++) {
+        for(int i = 0; i < numsList.size(); i++) { //traverses the entire list
             System.out.println("Iteration start...");
             /**
              * For every value in the list/sublist remove one.
@@ -39,35 +34,23 @@ public class ArrayPermutation {
             System.out.println("numList: " + numsList);
             //Adding the removed value as a list to the temp list of lists.
             int val = numsList.remove(i); //removing value i
-            //List of permutations in current index
-           //ArrayList<ArrayList<Integer>> vList = new ArrayList<>();
-            System.out.println("Value removed: " + val);
-            System.out.println("Temp before rec adAll: " + temp);
-
-            System.out.println("numsList passed: " + numsList);
+            System.out.println("VAL:: " + val);
             //Rec call and saves the resulting permutations
             ArrayList<ArrayList<Integer>> returned = backtrack(numsList);
-            System.out.println("Returned: " + returned);
 
-            for(ArrayList perm : returned) {
-                perm.add(0, val);
-                System.out.println("Perm loop: " + perm);
+
+            for(ArrayList<Integer> ret : returned) {
+                ArrayList<Integer> holder = new ArrayList<>();
+                holder.add(val);
+                holder.addAll(ret);
+                temp.add(holder);
             }
 
-            temp.addAll(returned);
-            System.out.println("Updated rec calls: " + returned);
-            System.out.println("Temp at end of iteration: " + temp);
-            System.out.println("numList: " + numsList);
+            numsList.add(0,val);
 
-
-            //System.out.println("vList before add: " + vList);
-            numsList.add(i, (Integer) val);
-            System.out.println("ReturnedII: " + returned);
         }
 
-
-
-
+        System.out.println("Final temp: " + temp);
         return temp;
         //System.out.println(permutation);
         //At the end the function should return the permutations for X level in the tree.
