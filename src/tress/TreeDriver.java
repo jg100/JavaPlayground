@@ -8,6 +8,12 @@ public class TreeDriver {
         myTree.addNode(6);
         myTree.addNode(7);
         myTree.addNode(8);
+        myTree.addNode(9);
+        myTree.addNode(10);
+        myTree.addNode(11);
+
+
+        myTree.bfsTraversal(myTree.getRoot());
 
     }
 }

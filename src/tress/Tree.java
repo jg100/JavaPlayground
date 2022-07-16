@@ -16,6 +16,10 @@ public class Tree<T> {
         this.root = null;
     }
 
+    public Node<T> getRoot() {
+        return root;
+    }
+
     public void addNode(T newNodeValue ) {
         Node<T> newNode = new Node<>(newNodeValue);
 
@@ -31,14 +35,23 @@ public class Tree<T> {
         this.currentNode = newNode;
     }
 
-    public void bfsTraversal() {
-        Node<T> currNode = root;
+
+    /**
+     *
+     * @param currNode, start with the root node when called
+     */
+    public void bfsTraversal(Node<T> currNode) {
+
         if(currNode.getV1() == null && currNode.getV2() == null) {
             System.out.print(currNode.getValue() + " ");
             return;
         }
-        System.out.println(currNode + " ");
+        System.out.println(currNode.getValue() + " ");
+        bfsTraversal(currNode.getV1());
     }
 
+    public void dfsTraversal(Node<T> currNode) {
+
+    }
 
 }
