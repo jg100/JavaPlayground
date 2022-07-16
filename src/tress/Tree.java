@@ -1,5 +1,7 @@
 package tress;
 
+import java.util.List;
+
 public class Tree<T> {
     private Node<T> root;
     private Node<T> currentNode;
@@ -26,6 +28,11 @@ public class Tree<T> {
         }
         //The most recent addition to the tree is set as the current node
         this.currentNode = newNode;
+    }
+
+    public List<Integer> bfsTraversal() {
+
+
     }
 
 
