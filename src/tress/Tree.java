@@ -1,5 +1,6 @@
 package tress;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tree<T> {
@@ -30,9 +31,13 @@ public class Tree<T> {
         this.currentNode = newNode;
     }
 
-    public List<Integer> bfsTraversal() {
-
-
+    public void bfsTraversal() {
+        Node<T> currNode = root;
+        if(currNode.getV1() == null && currNode.getV2() == null) {
+            System.out.print(currNode.getValue() + " ");
+            return;
+        }
+        System.out.println(currNode + " ");
     }
 
 
