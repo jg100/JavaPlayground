@@ -42,12 +42,13 @@ public class Tree<T> {
      */
     public void bfsTraversal(Node<T> currNode) {
 
-        if(currNode.getV1() == null && currNode.getV2() == null) {
-            System.out.print(currNode.getValue() + " ");
+        if(currNode == null) {
             return;
         }
         System.out.println(currNode.getValue() + " ");
         bfsTraversal(currNode.getV1());
+        bfsTraversal(currNode.getV2());
+
     }
 
     public void dfsTraversal(Node<T> currNode) {

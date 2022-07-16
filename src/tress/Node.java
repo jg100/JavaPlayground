@@ -13,6 +13,8 @@ public class Node<T> {
 
     public void setValue(T value) {
         this.value = value;
+        this.v1 = null;
+        this.v2 = null;
     }
 
     public void setV1(Node v1) {
