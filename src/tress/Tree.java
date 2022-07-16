@@ -4,8 +4,8 @@ public class Tree<T> {
     private Node<T> root;
     private Node<T> currentNode;
 
-    Tree(Node<T> root) {
-        this.root = root;
+    Tree(T rootValue) {
+        this.root = new Node<T>(rootValue);
         this.currentNode = root;
     }
 
@@ -13,7 +13,9 @@ public class Tree<T> {
         this.root = null;
     }
 
-    public void addNode(Node<T> newNode) {
+    public void addNode(T newNodeValue ) {
+        Node<T> newNode = new Node<>(newNodeValue);
+
         //If left or right nodes are empty, new node is attached to correpsonding node.
         if(currentNode.getV1() == null) {
             currentNode.setV1(newNode);
@@ -24,9 +26,7 @@ public class Tree<T> {
         }
         //The most recent addition to the tree is set as the current node
         this.currentNode = newNode;
-
     }
-
 
 
 }

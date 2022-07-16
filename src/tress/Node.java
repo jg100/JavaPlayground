@@ -6,6 +6,7 @@ public class Node<T> {
     private Node v2;
 
     Node(T value) {
+        this.value = value;
         this.v1 = null;
         this.v2 = null;
     }
